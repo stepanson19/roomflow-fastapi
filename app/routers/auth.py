@@ -36,7 +36,22 @@ def register_user(payload: UserCreate, db: Annotated[Session, Depends(get_db)]) 
     return user
 
 
-@router.post("/login", response_model=Token)
+@router.post(
+    "/login",
+    response_model=Token,
+    openapi_extra={
+        "requestBody": {
+            "content": {
+                "application/x-www-form-urlencoded": {
+                    "example": {
+                        "username": "admin@example.com",
+                        "password": "StrongPass123",
+                    }
+                }
+            }
+        }
+    },
+)
 def login_user(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: Annotated[Session, Depends(get_db)],
