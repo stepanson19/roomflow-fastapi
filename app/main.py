@@ -4,7 +4,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import HTMLResponse
 
-from app.database import Base, engine
+from app.database import Base, engine, session_factory
+from app.demo_data import seed_demo_data
 from app.errors import http_exception_handler, validation_exception_handler
 from app.routers import api_router
 from app.ui import HOME_PAGE
@@ -13,6 +14,8 @@ from app.ui import HOME_PAGE
 @asynccontextmanager
 async def lifespan(_application: FastAPI):
     Base.metadata.create_all(bind=engine)
+    with session_factory() as db:
+        seed_demo_data(db)
     yield
 
 

@@ -84,6 +84,22 @@ uvicorn app.main:app --reload
 
 Если `ROOMFLOW_DATABASE_URL` не задан, используется `sqlite:///./roomflow.db`.
 
+## Облачная демо-версия
+
+Проект развернут на Vercel:
+
+```text
+https://roomflow-fastapi.vercel.app
+```
+
+Swagger для проверки API:
+
+```text
+https://roomflow-fastapi.vercel.app/docs
+```
+
+В облаке используется SQLite во временном хранилище serverless-функции. Это подходит для демонстрации API, но для реальной эксплуатации нужно подключить постоянную БД, например PostgreSQL.
+
 ## Docker
 
 ```bash
