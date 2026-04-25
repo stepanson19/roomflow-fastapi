@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      ROOMFLOW_SECRET_KEY: ${ROOMFLOW_SECRET_KEY:?Set ROOMFLOW_SECRET_KEY}
+      ROOMFLOW_DATABASE_URL: sqlite:////data/roomflow.db
+    volumes:
+      - roomflow_data:/data
+
+volumes:
+  roomflow_data:

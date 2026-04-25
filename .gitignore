@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+*.pyc
+*.db
+*.sqlite
+.DS_Store
+.env
+Proekt_Razrabotka_veb-prilozhenia_na_FastAPI.pdf
